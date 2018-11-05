@@ -13,6 +13,16 @@ gulp.task("devSass", function() {
         }))
         .pipe(clean())
         .pipe(gulp.dest("./src/css"))
+
+})
+gulp.task('devJs', function() {
+    return gulp.src('./src/js/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/libs'))
+})
+gulp.task("devServer", function() {
+    return gulp.src("src")
+        .pipe(server())
 })
 gulp.task("watch", function() {
     return gulp.watch("./src/scss/*.scss", gulp.series("devSass"))
